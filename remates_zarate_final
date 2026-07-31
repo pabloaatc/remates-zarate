@@ -4,105 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remates Zárate | Portal Profesional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --c-navy: #0F172A; --c-blue: #2563EB; --c-white: #FFFFFF; --c-light: #F8FAFC; --c-text: #64748B;
-        }
-        body { font-family: 'Lexend Deca', sans-serif; background-color: var(--c-light); margin: 0; color: var(--c-navy); }
+        body { font-family: sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
+        header { background: white; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-weight: 800; font-size: 20px; }
+        nav a { margin-left: 15px; text-decoration: none; color: #64748b; font-size: 12px; font-weight: 600; text-transform: uppercase; }
         
-        header { background: var(--c-white); padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-size: 24px; font-weight: 800; text-transform: uppercase; }
-        .logo span { color: var(--c-blue); }
-        nav a { margin-left: 20px; text-decoration: none; color: var(--c-text); font-weight: 600; font-size: 12px; text-transform: uppercase; }
+        .hero { height: 400px; background: #011438; color: white; display: flex; align-items: center; padding: 0 50px; }
+        .btn-cta { background: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; }
         
-        .hero { height: 450px; background: var(--c-navy); color: white; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; }
-        .hero-text { max-width: 500px; }
-        .btn-cta { background: var(--c-blue); color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 20px; }
-        
-        .container { padding: 50px; max-width: 1200px; margin: auto; }
-        .section-title { font-size: 28px; font-weight: 800; margin-bottom: 30px; text-transform: uppercase; }
+        .container { padding: 40px 50px; max-width: 1200px; margin: auto; }
         .carrusel { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; }
-        .card { min-width: 280px; background: var(--c-white); border-radius: 10px; overflow: hidden; border: 1px solid #ddd; }
-        .card img { width: 100%; height: 160px; object-fit: cover; }
+        .card { min-width: 280px; background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; }
+        .card img { width: 100%; height: 150px; background: #e2e8f0; display: block; }
         .card-body { padding: 15px; }
-        .price { font-size: 20px; font-weight: 800; color: var(--c-blue); margin: 10px 0; }
         
-        .inmuebles-section { background: var(--c-white); padding: 50px; }
-        .form-section { background: var(--c-navy); color: white; padding: 50px; text-align: center; }
-        .form-box { background: white; color: var(--c-navy); padding: 30px; max-width: 600px; margin: 20px auto; border-radius: 10px; }
-        input, select { width: 90%; padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        .form-section { background: #011438; color: white; padding: 40px; text-align: center; }
+        input, select { width: 300px; padding: 10px; margin: 5px; border-radius: 4px; border: none; }
         
-        .map-section { padding: 50px; text-align: center; }
-        iframe { width: 100%; height: 300px; border: none; border-radius: 10px; }
+        footer { background: #0f172a; color: #94a3b8; padding: 30px; text-align: center; font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">ZÁRATE <span>REMATES</span></div>
-        <nav>
-            <a href="#siniestrados">Siniestrados</a>
-            <a href="#retail">Retail</a>
-            <a href="#inmuebles">Inmuebles</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+<header>
+    <div class="logo">ZÁRATE REMATES</div>
+    <nav>
+        <a href="#siniestrados">Siniestrados</a>
+        <a href="#retail">Retail</a>
+        <a href="#inmuebles">Inmuebles</a>
+    </nav>
+</header>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Rematar es fácil<br><span>cuando todo es claro.</span></h1>
-            <p>Vehículos siniestrados, retail e inmuebles. Pujas 100% online.</p>
-            <a href="#siniestrados" class="btn-cta">Ver Catálogo</a>
-        </div>
-    </section>
+<section class="hero">
+    <div>
+        <h1>Remate en Línea</h1>
+        <p>Tu próxima oportunidad.</p>
+        <a href="#siniestrados" class="btn-cta">Ver Catálogo</a>
+    </div>
+</section>
 
-    <section id="siniestrados" class="container">
-        <h2 class="section-title">Vehículos Siniestrados</h2>
-        <div class="carrusel">
-            <div class="card"><img src="https://placehold.co/600x400" alt="Auto"><div class="card-body"><h3>Nissan Navara 2023</h3><div class="price">$5.200.000</div></div></div>
-            <div class="card"><img src="https://placehold.co/600x400" alt="Auto"><div class="card-body"><h3>Toyota Yaris 2022</h3><div class="price">$2.100.000</div></div></div>
-            <div class="card"><img src="https://placehold.co/600x400" alt="Auto"><div class="card-body"><h3>Chevrolet Tracker 2024</h3><div class="price">$6.500.000</div></div></div>
-            <div class="card"><img src="https://placehold.co/600x400" alt="Auto"><div class="card-body"><h3>Ford Ranger 2023</h3><div class="price">$7.100.000</div></div></div>
-        </div>
-    </section>
+<section id="siniestrados" class="container">
+    <h2>Vehículos Siniestrados</h2>
+    <div class="carrusel">
+        <div class="card"><img src="https://placehold.co/600x400?text=Nissan+Navara" alt="Nissan"><div class="card-body"><h3>Nissan Navara</h3><div class="price">$5.200.000</div></div></div>
+        <div class="card"><img src="https://placehold.co/600x400?text=Toyota+Yaris" alt="Toyota"><div class="card-body"><h3>Toyota Yaris</h3><div class="price">$2.100.000</div></div></div>
+        <div class="card"><img src="https://placehold.co/600x400?text=Chevrolet+Tracker" alt="Chevrolet"><div class="card-body"><h3>Chevrolet Tracker</h3><div class="price">$6.500.000</div></div></div>
+    </div>
+</section>
 
-    <section id="retail" class="container">
-        <h2 class="section-title">Retail Hogar</h2>
-        <div class="carrusel">
-            <div class="card"><img src="https://placehold.co/600x400" alt="Item"><div class="card-body"><h3>Refrigerador Samsung</h3><div class="price">$350.000</div></div></div>
-            <div class="card"><img src="https://placehold.co/600x400" alt="Item"><div class="card-body"><h3>Smart TV LG 65"</h3><div class="price">$280.000</div></div></div>
-            <div class="card"><img src="https://placehold.co/600x400" alt="Item"><div class="card-body"><h3>Sofa Seccional</h3><div class="price">$190.000</div></div></div>
-            <div class="card"><img src="https://placehold.co/600x400" alt="Item"><div class="card-body"><h3>Estufa Pellet</h3><div class="price">$420.000</div></div></div>
-        </div>
-    </section>
+<section id="retail" class="container">
+    <h2>Retail Hogar</h2>
+    <div class="carrusel">
+        <div class="card"><img src="https://placehold.co/600x400?text=Refrigerador" alt="Refri"><div class="card-body"><h3>Refrigerador</h3><div class="price">$350.000</div></div></div>
+        <div class="card"><img src="https://placehold.co/600x400?text=Smart+TV" alt="TV"><div class="card-body"><h3>Smart TV</h3><div class="price">$280.000</div></div></div>
+    </div>
+</section>
 
-    <section id="inmuebles" class="inmuebles-section">
-        <div class="container">
-            <h2 class="section-title">Propiedades</h2>
-            <div class="carrusel">
-                <div class="card"><img src="https://placehold.co/600x400" alt="Casa"><div class="card-body"><h3>Casa Las Condes</h3><div class="price">$220.000.000</div></div></div>
-                <div class="card"><img src="https://placehold.co/600x400" alt="Depto"><div class="card-body"><h3>Depto Providencia</h3><div class="price">$115.000.000</div></div></div>
-                <div class="card"><img src="https://placehold.co/600x400" alt="Terreno"><div class="card-body"><h3>Parcela Colina</h3><div class="price">$65.000.000</div></div></div>
-                <div class="card"><img src="https://placehold.co/600x400" alt="Campo"><div class="card-body"><h3>Casa Campo Lampa</h3><div class="price">$195.000.000</div></div></div>
-            </div>
-        </div>
-    </section>
+<section id="inmuebles" class="container">
+    <h2>Propiedades</h2>
+    <div class="carrusel">
+        <div class="card"><img src="https://placehold.co/600x400?text=Casa" alt="Casa"><div class="card-body"><h3>Casa Las Condes</h3><div class="price">$220.000.000</div></div></div>
+        <div class="card"><img src="https://placehold.co/600x400?text=Depto" alt="Depto"><div class="card-body"><h3>Depto Providencia</h3><div class="price">$115.000.000</div></div></div>
+    </div>
+</section>
 
-    <section id="contacto" class="form-section">
-        <h2>Liquida tus Activos</h2>
-        <div class="form-box">
-            <input type="text" placeholder="Nombre">
-            <input type="text" placeholder="Teléfono">
-            <select><option>Siniestrados</option><option>Retail</option><option>Inmuebles</option></select>
-            <button class="btn-cta">Enviar Solicitud</button>
-        </div>
-    </section>
+<section class="form-section">
+    <h3>Liquida tus Activos</h3>
+    <input type="text" placeholder="Nombre">
+    <input type="text" placeholder="Teléfono">
+    <button class="btn-cta">Enviar</button>
+</section>
 
-    <section class="map-section">
-        <h2>Ubicación</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3331.5458!2d-70.7188!3d-33.3675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c16f2c79d1a3%3A0x6b2b7b2b7b2b7b2b!2sSan%20Ignacio%20101%2C%20Quilicura%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1620000000000!5m2!1ses!2scl" allowfullscreen="" loading="lazy"></iframe>
-    </section>
+<footer>
+    <p>© 2026 Remate Industrial Limitada - San Ignacio 101, Quilicura</p>
+</footer>
 
 </body>
 </html>
