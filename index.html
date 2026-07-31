@@ -3,82 +3,666 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remates Zárate | Portal Profesional</title>
+    <title>Remates Zárate | El Portal de Liquidaciones #1 de Chile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; background-color: #f8fafc; margin: 0; color: #0f172a; }
-        header { background: white; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo { font-weight: 800; font-size: 20px; }
-        nav a { margin-left: 15px; text-decoration: none; color: #64748b; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        :root { 
+            --color-principal: #0F172A; 
+            --color-acento: #2563EB; 
+            --color-secundario: #3B82F6; 
+            --fondo-sitio: #F8FAFC; 
+            --fondo-tarjetas: #FFFFFF; 
+            --texto-claro: #64748B; 
+            --alerta: #E11D48; 
+            --exito: #10B981; 
+            --naranja: #F59E0B; 
+        }
         
-        .hero { height: 400px; background: #011438; color: white; display: flex; align-items: center; padding: 0 50px; }
-        .btn-cta { background: #2563eb; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; }
+        body { font-family: 'Lexend Deca', sans-serif; background-color: var(--fondo-sitio); margin: 0; color: var(--color-principal); scroll-behavior: smooth; overflow-x: hidden; font-size: 14px; line-height: 1.6; font-weight: 300;}
         
-        .container { padding: 40px 50px; max-width: 1200px; margin: auto; }
-        .carrusel { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 20px; }
-        .card { min-width: 280px; background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; }
-        .card img { width: 100%; height: 150px; background: #e2e8f0; display: block; }
-        .card-body { padding: 15px; }
+        /* CINTA TICKER - OSCURA Y ELEGANTE */
+        .cinta-noticias { background-color: var(--color-principal); color: var(--fondo-sitio); padding: 10px 0; overflow: hidden; white-space: nowrap; display: flex; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+        .cinta-animada { display: inline-block; white-space: nowrap; animation: ticker-move 35s linear infinite; }
+        .cinta-animada:hover { animation-play-state: paused; }
+        .cinta-animada span { margin-right: 50px; }
+        .highlight-naranja { color: #FCD34D; font-weight: 800; }
+        @keyframes ticker-move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* HEADER LUMINOSO Y ESPACIOSO */
+        header { background: rgba(255, 255, 255, 0.95); padding: 15px 60px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
+        .logo-text { font-weight: 800; font-size: 26px; color: var(--color-principal); letter-spacing: -1px; text-decoration: none; display: flex; align-items: center; text-transform: uppercase;}
+        .logo-text span { color: var(--color-acento); margin-left: 8px; font-weight: 700; font-size: 15px; letter-spacing: 2px;}
+        .nav-menu { display: flex; align-items: center; gap: 30px;}
+        .nav-menu a { text-decoration: none; color: var(--texto-claro); font-weight: 600; font-size: 13px; transition: color 0.3s; text-transform: uppercase; letter-spacing: 0.5px;}
+        .nav-menu a:hover { color: var(--color-acento); }
+        .btn-login { background: var(--color-principal); color: var(--fondo-sitio) !important; padding: 12px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2); transition: all 0.3s; font-size: 12px !important; font-weight: 700;}
+        .btn-login:hover { background: var(--color-acento); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3); }
+
+        /* HERO SLIDER REDISEÑADO */
+        .hero-slider { position: relative; width: 100%; height: 500px; overflow: hidden; background-color: var(--color-principal); }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; }
+        .slide.active { opacity: 1; z-index: 1; }
+        .hero-content { display: flex; align-items: center; justify-content: space-between; gap: 50px; padding: 0 60px; width: 100%; max-width: 1400px; color: var(--fondo-sitio); }
+        .hero-text { flex: 1; }
         
-        .form-section { background: #011438; color: white; padding: 40px; text-align: center; }
-        input, select { width: 300px; padding: 10px; margin: 5px; border-radius: 4px; border: none; }
+        .slide-nueva { background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.9) 100%), url('https://loremflickr.com/1920/1080/luxury,car/all') center/cover; }
+        .slide-nueva .hero-text h1 { font-size: 52px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: -1.5px; font-weight: 800; line-height: 1.1; color: var(--fondo-sitio);}
+        .slide-nueva .hero-text h1 span { color: var(--color-acento); }
+        .slide-nueva .hero-text p { color: #94A3B8; max-width: 550px; font-size: 16px; margin-bottom: 30px; font-weight: 400; line-height: 1.6;}
+        .btn-cat, .btn-liq { padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; font-size: 13px; letter-spacing: 0.5px; }
+        .btn-cat { background: var(--color-acento); color: white; margin-right: 15px; }
+        .btn-cat:hover { background: var(--color-secundario); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);}
+        .btn-liq { background: transparent; border: 1px solid #475569; color: white; }
+        .btn-liq:hover { border-color: white; transform: translateY(-2px); }
         
-        footer { background: #0f172a; color: #94a3b8; padding: 30px; text-align: center; font-size: 12px; }
+        .pr-card { background: rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 30px; width: 100%; max-width: 450px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(15px);}
+        .pr-header { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 15px; font-size: 12px; letter-spacing: 1.5px; color: #CBD5E1; text-transform: uppercase; font-weight: 700;}
+        .pr-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s; padding-left: 10px; padding-right: 10px; border-radius: 8px;}
+        .pr-item:hover { background: rgba(255, 255, 255, 0.05);}
+        .pr-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0;}
+        .pr-info strong { display: block; color: var(--fondo-sitio); font-size: 15px; margin-bottom: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;}
+        .pr-info span { color: #94A3B8; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;}
+        .pr-time { display: flex; gap: 12px; align-items: center; }
+        .pr-day { background: var(--color-acento); color: var(--fondo-sitio); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; width: 40px; text-align: center; letter-spacing: 0.5px;}
+        .pr-hour { color: #60A5FA; font-family: monospace; font-size: 16px; width: auto; min-width: 50px; text-align: right; font-weight: 700;}
+
+        /* SLIDES */
+        .hero-text h1.titulo-slide { font-size: 44px; margin: 0 0 12px 0; line-height: 1.1; font-weight: 800; text-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .hero-text p.desc-slide { font-size: 17px; font-weight: 400; margin-bottom: 25px; line-height: 1.6; text-shadow: 0 2px 10px rgba(0,0,0,0.8); max-width: 550px;}
+        .etiqueta-top { display: inline-block; background: var(--color-acento); padding: 8px 16px; border-radius: 6px; font-weight: 800; font-size: 11px; letter-spacing: 2px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-transform: uppercase;}
+        
+        .urgency-card { background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 35px 30px; border-radius: 16px; text-align: center; width: 100%; max-width: 350px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .urgency-card h3 { margin-top: 0; color: var(--fondo-sitio); font-size: 20px; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
+        .fecha-destacada { font-size: 32px; font-weight: 800; display: block; margin: 12px 0 18px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); color: #60A5FA;}
+        .btn-hero { background: var(--fondo-sitio); color: var(--color-principal); padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 13px; display: inline-block; transition: all 0.3s; width: 80%; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-hero:hover { background: var(--color-acento); color: var(--fondo-sitio); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4); }
+
+        .slider-controls { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
+        .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; transition: all 0.3s; }
+        .dot.active { background: var(--color-acento); transform: scale(1.3); }
+
+        /* SECCIONES Y CARRUSEL */
+        .container { padding: 80px 60px; max-width: 1400px; margin: 0 auto; }
+        .section-header-row { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #E2E8F0; padding-bottom: 15px; margin-bottom: 40px; }
+        .title-wrapper { display: flex; flex-direction: column; }
+        .section-pretitle { color: var(--texto-claro); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        .section-title { color: var(--color-principal); font-size: 32px; margin: 0; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; }
+        .section-meta { text-align: right; color: var(--texto-claro); font-size: 12px; font-weight: 500; line-height: 1.6; font-family: monospace; }
+        .section-meta strong { color: var(--color-principal); font-weight: 700; font-size: 13px; }
+
+        .carrusel-lotes { display: flex; overflow-x: auto; gap: 30px; padding-bottom: 25px; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
+        .carrusel-lotes::-webkit-scrollbar { height: 8px; }
+        .carrusel-lotes::-webkit-scrollbar-track { background: #E2E8F0; border-radius: 10px; }
+        .carrusel-lotes::-webkit-scrollbar-thumb { background: var(--color-acento); border-radius: 10px; transition: all 0.3s;}
+        
+        .card-lote { background: var(--fondo-tarjetas); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; transition: all 0.3s ease; position: relative; display: flex; flex-direction: column; min-width: 320px; flex: 0 0 auto; scroll-snap-align: start; }
+        .card-lote:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12); border-color: var(--color-acento); }
+        .card-lote img { width: 100%; height: 200px; object-fit: cover; border-bottom: 4px solid var(--color-acento); background-color: #F1F5F9;}
+        .img-container { overflow: hidden; position: relative; }
+        
+        .badge { position: absolute; top: 15px; left: 15px; background: var(--exito); color: white; padding: 5px 12px; border-radius: 6px; font-size: 10px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 2; letter-spacing: 0.5px; text-transform: uppercase; }
+        .badge.bad { background: var(--alerta); }
+        .badge.retail { background: var(--naranja); }
+        
+        .card-body { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .card-body h3 { margin: 0 0 10px 0; color: var(--color-principal); font-size: 17px; line-height: 1.3; font-weight: 700; letter-spacing: -0.3px; }
+        .card-desc { background: #F1F5F9; color: var(--texto-claro); padding: 6px 10px; border-radius: 6px; font-size: 12px; margin: 0 0 15px 0; font-weight: 600; display: inline-block; align-self: flex-start; border: 1px solid #E2E8F0; }
+        .price { font-size: 24px; color: var(--color-acento); font-weight: 800; margin: auto 0 20px 0; letter-spacing: -0.5px; }
+        
+        .btn-outline { display: block; text-align: center; background: var(--fondo-sitio); border: 1px solid #CBD5E1; color: var(--color-principal); padding: 12px; border-radius: 6px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
+        .card-lote:hover .btn-outline { background: var(--color-acento); color: var(--fondo-sitio); border-color: var(--color-acento); }
+
+        #retail { background-color: var(--fondo-tarjetas); }
+
+        /* GRID PARA TUTORIAL */
+        .grid-tutorial { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .grid-tutorial .card-lote { min-width: auto; flex: auto; scroll-snap-align: none; border-top: 5px solid var(--color-acento); border-bottom: 1px solid #E2E8F0;}
+
+        /* FORMULARIO DE CAPTACIÓN */
+        .captacion-global { background: var(--color-principal); margin: 60px 60px; border-radius: 16px; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2); max-width: 1400px; margin-left: auto; margin-right: auto; overflow: hidden; border: 1px solid #334155;}
+        .captacion-texto { padding: 60px; color: white; display: flex; flex-direction: column; justify-content: center; }
+        .captacion-texto .pretitle { font-size: 11px; letter-spacing: 2px; color: #94A3B8; text-transform: uppercase; font-weight: 700; margin-bottom: 15px; display: block;}
+        .captacion-texto h2 { font-size: 32px; margin: 0 0 15px 0; line-height: 1.2; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; }
+        .captacion-texto p { font-size: 15px; line-height: 1.6; color: #CBD5E1; font-weight: 400; margin: 0; }
+        
+        .captacion-form-box { background: var(--fondo-tarjetas); padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        .captacion-form-box h3 { color: var(--color-principal); font-size: 20px; margin: 0 0 25px 0; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px;}
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-grid input, .form-grid select { padding: 14px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; font-size: 13px; color: var(--color-principal); font-weight: 500; background: #F8FAFC; transition: all 0.3s;}
+        .btn-submit { background: var(--color-acento); color: white; border: none; padding: 16px; font-size: 13px; font-weight: 800; border-radius: 8px; cursor: pointer; grid-column: span 2; margin-top: 10px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-submit:hover { background: var(--color-principal); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3); }
+
+        /* FAQ Y OPERATIVO */
+        .faq-section { background: var(--fondo-tarjetas); padding: 80px 60px; }
+        details { background: var(--fondo-sitio); margin-bottom: 15px; border-radius: 10px; overflow: hidden; border: 1px solid #E2E8F0; transition: all 0.3s; }
+        summary { padding: 20px 25px; font-weight: 700; cursor: pointer; color: var(--color-principal); font-size: 15px; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center; letter-spacing: -0.3px; }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; color: var(--color-acento); font-size: 24px; font-weight: 400; transition: transform 0.3s; }
+        details[open] summary::after { transform: rotate(45deg); }
+        .faq-content { padding: 0 25px 25px; color: var(--texto-claro); line-height: 1.6; font-size: 14px; font-weight: 400; }
+
+        .operativo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+        .bank-box { background: var(--fondo-tarjetas); padding: 40px; border-radius: 16px; border-left: 6px solid var(--color-principal); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;}
+        .bank-box h3 { color: var(--color-principal); font-size: 20px; margin-top: 0; font-weight: 800; letter-spacing:-0.5px; margin-bottom: 15px;}
+        .bank-data { background: #F1F5F9; padding: 20px; border-radius: 8px; font-family: monospace; font-size: 14px; margin: 20px 0; border: 1px dashed #94A3B8; line-height: 1.6; font-weight: 600; color: var(--color-principal); }
+        .map-box { border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 350px; border: 1px solid #E2E8F0;}
+
+        /* FOOTER */
+        footer { background: var(--color-principal); color: #94A3B8; padding: 60px 60px 25px; border-top: 5px solid var(--color-acento);}
+        .footer-logo-text { font-weight: 800; font-size: 28px; color: var(--fondo-sitio); letter-spacing: -1px; text-decoration: none; margin-bottom: 20px; display: block; text-transform: uppercase;}
+        .footer-logo-text span { color: var(--color-acento); font-weight: 700; font-size: 16px; letter-spacing: 2px;}
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 40px; max-width: 1400px; margin-left: auto; margin-right: auto; }
+        .footer-grid h4 { color: var(--fondo-sitio); font-size: 16px; margin-bottom: 20px; font-weight: 700; letter-spacing: -0.3px; text-transform: uppercase;}
+        .footer-grid p, .footer-grid a { color: #CBD5E1; text-decoration: none; line-height: 1.6; font-weight: 400; transition: color 0.3s; font-size: 14px;}
+        .footer-grid a:hover { color: var(--color-acento); padding-left: 5px; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-weight: 400; font-size: 12px; color: #64748B;}
+
+        @media (max-width: 992px) {
+            header { flex-direction: column; padding: 15px; gap: 15px; }
+            .nav-menu { flex-wrap: wrap; justify-content: center; gap: 12px; }
+            .hero-slider { height: 650px; }
+            .hero-content { flex-direction: column; text-align: center; gap: 30px; padding: 0 20px;}
+            .slide-nueva .hero-text h1 { font-size: 40px; }
+            .pr-card { max-width: 100%; padding: 25px;}
+            .section-header-row { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 25px;}
+            .captacion-global { grid-template-columns: 1fr; margin: 30px 20px; border-radius: 12px; }
+            .captacion-texto { padding: 30px; text-align: center; }
+            .captacion-form-box { padding: 30px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .btn-submit { grid-column: span 1; }
+            .container { padding: 50px 20px; }
+            .operativo-grid { grid-template-columns: 1fr;}
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">ZÁRATE REMATES</div>
-    <nav>
-        <a href="#siniestrados">Siniestrados</a>
-        <a href="#retail">Retail</a>
-        <a href="#inmuebles">Inmuebles</a>
-    </nav>
-</header>
-
-<section class="hero">
-    <div>
-        <h1>Remate en Línea</h1>
-        <p>Tu próxima oportunidad.</p>
-        <a href="#siniestrados" class="btn-cta">Ver Catálogo</a>
+    <div class="cinta-noticias">
+        <div class="cinta-animada">
+            <span>REMATE SINIESTRADOS · MARTES 15:00 HRS · <span class="highlight-naranja">42 LOTES ACTIVOS</span></span>
+            <span>REMATE RETAIL HOGAR · MIÉRCOLES 10:30 HRS · <span class="highlight-naranja">28 LOTES ACTIVOS</span></span>
+            <span>GARANTÍA VEHÍCULOS <span class="highlight-naranja">$1.000.000</span></span>
+            <span>GARANTÍA RETAIL <span class="highlight-naranja">$500.000</span></span>
+            <span>REMATE SINIESTRADOS · MARTES 15:00 HRS · <span class="highlight-naranja">42 LOTES ACTIVOS</span></span>
+            <span>REMATE RETAIL HOGAR · MIÉRCOLES 10:30 HRS · <span class="highlight-naranja">28 LOTES ACTIVOS</span></span>
+        </div>
     </div>
-</section>
 
-<section id="siniestrados" class="container">
-    <h2>Vehículos Siniestrados</h2>
-    <div class="carrusel">
-        <div class="card"><img src="https://placehold.co/600x400?text=Nissan+Navara" alt="Nissan"><div class="card-body"><h3>Nissan Navara</h3><div class="price">$5.200.000</div></div></div>
-        <div class="card"><img src="https://placehold.co/600x400?text=Toyota+Yaris" alt="Toyota"><div class="card-body"><h3>Toyota Yaris</h3><div class="price">$2.100.000</div></div></div>
-        <div class="card"><img src="https://placehold.co/600x400?text=Chevrolet+Tracker" alt="Chevrolet"><div class="card-body"><h3>Chevrolet Tracker</h3><div class="price">$6.500.000</div></div></div>
-    </div>
-</section>
+    <header>
+        <a href="#" class="logo-text">ZÁRATE <span>REMATES</span></a>
+        <nav class="nav-menu">
+            <a href="#siniestrados">Siniestrados</a>
+            <a href="#retail">Retail Hogar</a>
+            <a href="#inmuebles">Inmuebles</a>
+            <a href="#liquida">Liquida tus Activos</a>
+            <a href="#" class="btn-login">Mi Cuenta / Pagar Garantía</a>
+        </nav>
+    </header>
 
-<section id="retail" class="container">
-    <h2>Retail Hogar</h2>
-    <div class="carrusel">
-        <div class="card"><img src="https://placehold.co/600x400?text=Refrigerador" alt="Refri"><div class="card-body"><h3>Refrigerador</h3><div class="price">$350.000</div></div></div>
-        <div class="card"><img src="https://placehold.co/600x400?text=Smart+TV" alt="TV"><div class="card-body"><h3>Smart TV</h3><div class="price">$280.000</div></div></div>
-    </div>
-</section>
+    <section class="hero-slider">
+        <div class="slide slide-nueva active">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span style="font-size: 12px; font-weight: 800; color: #94A3B8; letter-spacing: 2px; margin-bottom: 15px; display: block;"><span style="color: #2563EB;">●</span> EL PORTAL DE LIQUIDACIONES #1 DE CHILE</span>
+                    <h1>Rematar es fácil<br><span>cuando todo es claro.</span></h1>
+                    <p>Vehículos siniestrados, excedentes de retail e inmuebles, con fichas técnicas verificadas y pujas 100% online desde tu celular o computador.</p>
+                    <div style="margin-top: 25px;">
+                        <a href="#siniestrados" class="btn-cat">Ver catálogo de hoy</a>
+                        <a href="#liquida" class="btn-liq">Quiero liquidar mis activos</a>
+                    </div>
+                </div>
+                <div class="pr-card">
+                    <div class="pr-header">
+                        <span>PRÓXIMOS REMATES</span>
+                        <span style="color: #F87171;">● EN VIVO</span>
+                    </div>
+                    <div class="pr-item">
+                        <div class="pr-info"><strong>SINIESTRADOS</strong><span>VEHÍCULOS PARTICULARES Y FLOTA</span></div>
+                        <div class="pr-time"><span class="pr-day">MAR</span><span class="pr-hour">15:00</span></div>
+                    </div>
+                    <div class="pr-item">
+                        <div class="pr-info"><strong>RETAIL HOGAR</strong><span>LÍNEA BLANCA Y ELECTRO</span></div>
+                        <div class="pr-time"><span class="pr-day">MIÉ</span><span class="pr-hour">10:30</span></div>
+                    </div>
+                    <div class="pr-item">
+                        <div class="pr-info"><strong>INMUEBLES</strong><span>GESTIÓN PERMANENTE</span></div>
+                        <div class="pr-time"><span class="pr-day" style="background: rgba(255,255,255,0.1); border: 1px solid #475569; color: #94A3B8; width: auto;">-</span><span class="pr-hour" style="font-size: 13px; color: #94A3B8;">Próximamente</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<section id="inmuebles" class="container">
-    <h2>Propiedades</h2>
-    <div class="carrusel">
-        <div class="card"><img src="https://placehold.co/600x400?text=Casa" alt="Casa"><div class="card-body"><h3>Casa Las Condes</h3><div class="price">$220.000.000</div></div></div>
-        <div class="card"><img src="https://placehold.co/600x400?text=Depto" alt="Depto"><div class="card-body"><h3>Depto Providencia</h3><div class="price">$115.000.000</div></div></div>
-    </div>
-</section>
+        <div class="slide" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%), url('https://loremflickr.com/1920/1080/car,crash/all') center/cover;">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="etiqueta-top">NUEVO LOTE DE VEHÍCULOS</span>
+                    <h1 class="titulo-slide">Siniestrados y particulares:<br>Tu próxima oportunidad.</h1>
+                    <p class="desc-slide">Accede a las subastas online más transparentes y seguras del mercado, con fichas técnicas verificadas y pujas 100% online.</p>
+                </div>
+                <div class="urgency-card">
+                    <h3>Remate Siniestrados</h3>
+                    <p style="margin: 8px 0 0; font-size: 14px; color: #93C5FD; font-weight: 600;">Remate en línea</p>
+                    <span class="fecha-destacada">Martes 15:00 hrs</span>
+                    <a href="#siniestrados" class="btn-hero">Ver Catálogo</a>
+                </div>
+            </div>
+        </div>
 
-<section class="form-section">
-    <h3>Liquida tus Activos</h3>
-    <input type="text" placeholder="Nombre">
-    <input type="text" placeholder="Teléfono">
-    <button class="btn-cta">Enviar</button>
-</section>
+        <div class="slide" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%), url('https://loremflickr.com/1920/1080/appliances/all') center/cover;">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="etiqueta-top" style="background: var(--naranja);">PRÓXIMO EVENTO</span>
+                    <h1 class="titulo-slide">Grandes Oportunidades<br>en Retail y Electrónica</h1>
+                    <p class="desc-slide">Accede a lotes exclusivos de línea blanca, tecnología y muebles. Maximiza tu rentabilidad rematando en vivo desde cualquier lugar de Chile.</p>
+                </div>
+                <div class="urgency-card">
+                    <h3>Remate Retail Hogar</h3>
+                    <p style="margin: 8px 0 0; font-size: 14px; color: #93C5FD; font-weight: 600;">Remate en línea</p>
+                    <span class="fecha-destacada">Miércoles 10:30 hrs</span>
+                    <a href="#retail" class="btn-hero">Ver Catálogo Retail</a>
+                </div>
+            </div>
+        </div>
 
-<footer>
-    <p>© 2026 Remate Industrial Limitada - San Ignacio 101, Quilicura</p>
-</footer>
+        <div class="slide" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%), url('https://loremflickr.com/1920/1080/modern,house/all') center/cover;">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="etiqueta-top" style="background: var(--exito);">GESTIÓN INMOBILIARIA</span>
+                    <h1 class="titulo-slide">Propiedades Exclusivas<br>a tu alcance.</h1>
+                    <p class="desc-slide">Gestión profesional de activos inmobiliarios. Encuentra casas, departamentos y terrenos con oportunidades únicas de inversión a lo largo de todo Chile.</p>
+                </div>
+                <div class="urgency-card">
+                    <h3>Catálogo Inmuebles</h3>
+                    <p style="margin: 8px 0 0; font-size: 14px; color: #93C5FD; font-weight: 600;">Revisión Permanente</p>
+                    <span class="fecha-destacada" style="font-size: 28px;">Próximamente</span>
+                    <a href="#inmuebles" class="btn-hero">Ver Antecedentes</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-controls">
+            <div class="dot active" onclick="changeSlide(0)"></div>
+            <div class="dot" onclick="changeSlide(1)"></div>
+            <div class="dot" onclick="changeSlide(2)"></div>
+            <div class="dot" onclick="changeSlide(3)"></div>
+        </div>
+    </section>
+
+    <section id="siniestrados" class="container">
+        <div class="section-header-row">
+            <div class="title-wrapper">
+                <span class="section-pretitle">CATÁLOGO ACTIVO · MARTES 15:00 HRS</span>
+                <h2 class="section-title">VEHÍCULOS SINIESTRADOS</h2>
+            </div>
+            <div class="section-meta">
+                Garantía requerida: <strong>$1.000.000</strong><br>
+                Comisión: <strong>12% + IVA + 1% gestión</strong>
+            </div>
+        </div>
+        
+        <div class="carrusel-lotes">
+            <div class="card-lote">
+                <span class="badge">✓ Motor Enciende</span>
+                <div class="img-container"><img src="https://loremflickr.com/600/400/pickup,truck/all" alt="Nissan Navara"></div>
+                <div class="card-body">
+                    <h3>Nissan Navara 2.3 2023</h3>
+                    <span class="card-desc">LOTE #405 - Volcamiento</span>
+                    <div class="price">$5.200.000</div>
+                    <a href="#" class="btn-outline">Ver Ficha Técnica</a>
+                </div>
+            </div>
+            <div class="card-lote">
+                <span class="badge bad">⚠ No Enciende</span>
+                <div class="img-container"><img src="https://loremflickr.com/600/400/sedan,car/all" alt="Toyota Yaris"></div>
+                <div class="card-body">
+                    <h3>Toyota Yaris 1.5 2022</h3>
+                    <span class="card-desc">LOTE #406 - Choque Frontal</span>
+                    <div class="price">$2.100.000</div>
+                    <a href="#" class="btn-outline">Ver Ficha Técnica</a>
+                </div>
+            </div>
+            <div class="card-lote">
+                <span class="badge">✓ Motor Enciende</span>
+                <div class="img-container"><img src="https://loremflickr.com/600/400/suv,car/all" alt="Chevrolet Tracker"></div>
+                <div class="card-body">
+                    <h3>Chevrolet Tracker 2024</h3>
+                    <span class="card-desc">LOTE #407 - Robo Hallazgo</span>
+                    <div class="price">$6.500.000</div>
+                    <a href="#" class="btn-outline">Ver Ficha Técnica</a>
+                </div>
+            </div>
+            <div class="card-lote">
+                <span class="badge bad">✓ Lote Destacado</span>
+                <div class="img-container"><img src="https://loremflickr.com/600/400/ford,ranger/all" alt="Ford Ranger"></div>
+                <div class="card-body">
+                    <h3>Ford Ranger XLT 2023</h3>
+                    <span class="card-desc">LOTE #408 - Colisión Severa</span>
+                    <div class="price">$7.100.000</div>
+                    <a href="#" class="btn-outline">Ver Ficha Técnica</a>
+                </div>
+            </div>
+            <div class="card-lote">
+                <span class="badge retail">✓ Funcionando</span>
+                <div class="img-container"><img src="https://loremflickr.com/600/400/excavator/all" alt="Excavadora"></div>
+                <div class="card-body">
+                    <h3>Excavadora JCB JS220 2021</h3>
+                    <span class="card-desc">LOTE #409 - Maquinaria Pesada</span>
+                    <div class="price">$45.000.000</div>
+                    <a href="#" class="btn-outline">Ver Antecedentes</a>
+                </div>
+            </div>
+            <div class="card-lote">
+                <span class="badge bad">⚠ No Enciende</span>
+                <div class="img-container"><img src="https://loremflickr.com/600/400/van,car/all" alt="Peugeot Partner"></div>
+                <div class="card-body">
+                    <h3>Peugeot Partner 1.6 HDi 2022</h3>
+                    <span class="card-desc">LOTE #410 - Colisión Lateral</span>
+                    <div class="price">$3.800.000</div>
+                    <a href="#" class="btn-outline">Ver Ficha Técnica</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="retail" class="container" style="background-color: var(--fondo-tarjetas); max-width: 100%; padding-left: 0; padding-right: 0;">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 60px;">
+            <div class="section-header-row">
+                <div class="title-wrapper">
+                    <span class="section-pretitle">PRÓXIMO EVENTO · MIÉRCOLES 10:30 HRS</span>
+                    <h2 class="section-title">RETAIL HOGAR</h2>
+                </div>
+                <div class="section-meta">
+                    Garantía requerida: <strong>$500.000</strong><br>
+                    Comisión: <strong>15% + IVA</strong>
+                </div>
+            </div>
+            
+            <div class="carrusel-lotes">
+                <div class="card-lote">
+                    <span class="badge retail">Caja Sellada</span>
+                    <div class="img-container"><img src="https://loremflickr.com/600/400/refrigerator/all" alt="Refrigerador"></div>
+                    <div class="card-body">
+                        <h3>Refrigerador Samsung Side by Side</h3>
+                        <span class="card-desc">Categoría: Línea Blanca</span>
+                        <div class="price">$350.000</div>
+                        <a href="#" class="btn-outline">Ver Detalles</a>
+                    </div>
+                </div>
+                <div class="card-lote">
+                    <span class="badge retail">Devolución</span>
+                    <div class="img-container"><img src="https://loremflickr.com/600/400/tv,screen/all" alt="TV"></div>
+                    <div class="card-body">
+                        <h3>Smart TV LG OLED 65" 4K</h3>
+                        <span class="card-desc">Categoría: Electrodomésticos</span>
+                        <div class="price">$280.000</div>
+                        <a href="#" class="btn-outline">Ver Detalles</a>
+                    </div>
+                </div>
+                <div class="card-lote">
+                    <span class="badge retail">Nuevo / Merma</span>
+                    <div class="img-container"><img src="https://loremflickr.com/600/400/sofa/all" alt="Sofa"></div>
+                    <div class="card-body">
+                        <h3>Juego de Living Seccional 3 Cuerpos</h3>
+                        <span class="card-desc">Categoría: Muebles y Hogar</span>
+                        <div class="price">$190.000</div>
+                        <a href="#" class="btn-outline">Ver Detalles</a>
+                    </div>
+                </div>
+                <div class="card-lote">
+                    <span class="badge retail">Caja Sellada</span>
+                    <div class="img-container"><img src="https://loremflickr.com/600/400/heater/all" alt="Estufa a Pellet"></div>
+                    <div class="card-body">
+                        <h3>Estufa a Pellet Toyotomi PS-11800</h3>
+                        <span class="card-desc">Categoría: Calefacción 11kW</span>
+                        <div class="price">$420.000</div>
+                        <a href="#" class="btn-outline">Ver Detalles</a>
+                    </div>
+                </div>
+                <div class="card-lote">
+                    <span class="badge retail">✓ Nuevo Sellado</span>
+                    <div class="img-container"><img src="https://loremflickr.com/600/400/macbook/all" alt="Macbook"></div>
+                    <div class="card-body">
+                        <h3>Macbook Pro 14" M3 512GB</h3>
+                        <span class="card-desc">LOTE #Retail 105 - Computación</span>
+                        <div class="price">$1.450.000</div>
+                        <a href="#" class="btn-outline">Ver Ficha Técnica</a>
+                    </div>
+                </div>
+                <div class="card-lote">
+                    <span class="badge retail">Devolución</span>
+                    <div class="img-container"><img src="https://loremflickr.com/600/400/espresso,machine/all" alt="Cafetera"></div>
+                    <div class="card-body">
+                        <h3>Cafetera Nespresso Vertuo Next</h3>
+                        <span class="card-desc">LOTE #Retail 106 - Pequeño Electro</span>
+                        <div class="price">$85.000</div>
+                        <a href="#" class="btn-outline">Ver Ficha Técnica</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inmuebles" class="container">
+        <div class="section-header-row">
+            <div class="title-wrapper">
+                <span class="section-pretitle">CATÁLOGO ACTIVO · GESTIÓN PERMANENTE</span>
+                <h2 class="section-title">PROPIEDADES</h2>
+            </div>
+            <div class="section-meta">
+                Garantía requerida: <strong>Según propiedad</strong><br>
+                Comisión: <strong>2% + IVA</strong>
+            </div>
+        </div>
+        
+        <div class="carrusel-lotes">
+            <div class="card-lote">
+                <div class="img-container"><img src="https://loremflickr.com/600/400/house,suburbs/all" alt="Casa" style="border-bottom-color: var(--color-acento);"></div>
+                <div class="card-body">
+                    <h3>Casa Mediterránea - Las Condes</h3>
+                    <span class="card-desc">4 Dormitorios | 3 Baños | 250m2</span>
+                    <div class="price" style="color: var(--color-acento);">$220.000.000</div>
+                    <a href="#" class="btn-outline">Ver Antecedentes</a>
+                </div>
+            </div>
+            <div class="card-lote">
+                <div class="img-container"><img src="https://loremflickr.com/600/400/apartment,building/all" alt="Depto" style="border-bottom-color: var(--color-acento);"></div>
+                <div class="card-body">
+                    <h3>Depto Amoblado - Providencia</h3>
+                    <span class="card-desc">2 Dormitorios | 2 Baños | 85m2</span>
+                    <div class="price" style="color: var(--color-acento);">$115.000.000</div>
+                    <a href="#" class="btn-outline">Ver Antecedentes</a>
+                </div>
+            </div>
+            <div class="card-lote">
+                <div class="img-container"><img src="https://loremflickr.com/600/400/field,land/all" alt="Terreno" style="border-bottom-color: var(--color-acento);"></div>
+                <div class="card-body">
+                    <h3>Parcela Agrícola - Colina</h3>
+                    <span class="card-desc">Terreno 5.000m2 | Rol Propio</span>
+                    <div class="price" style="color: var(--color-acento);">$65.000.000</div>
+                    <a href="#" class="btn-outline">Ver Antecedentes</a>
+                </div>
+            </div>
+            <div class="card-lote">
+                <div class="img-container"><img src="https://loremflickr.com/600/400/farmhouse/all" alt="Casa Campo" style="border-bottom-color: var(--color-acento);"></div>
+                <div class="card-body">
+                    <h3>Casa de Campo Luxury - Lampa</h3>
+                    <span class="card-desc">5 Dorm | 4 Baños | Parcela 1 Ha.</span>
+                    <div class="price" style="color: var(--color-acento);">$195.000.000</div>
+                    <a href="#" class="btn-outline">Ver Antecedentes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="liquida" style="padding: 10px 0;">
+        <div class="captacion-global">
+            <div class="captacion-texto">
+                <span class="pretitle">LIQUIDACIÓN DE ACTIVOS</span>
+                <h2>CONVIERTE TUS ACTIVOS EN LIQUIDEZ INMEDIATA</h2>
+                <p>Ya sea tu vehículo, maquinaria, excedentes de retail corporativo o una propiedad, estructuramos la mejor estrategia de liquidación para maximizar tu retorno de forma rápida y transparente.</p>
+            </div>
+            <div class="captacion-form-box">
+                <h3>SOLICITA TU ASESORÍA</h3>
+                <div class="form-grid">
+                    <input type="text" placeholder="Nombre completo / Empresa">
+                    <input type="text" placeholder="Teléfono / Celular">
+                    <select>
+                        <option>Vehículo Particular / Siniestrado</option>
+                        <option>Retail / Excedentes de Bodega</option>
+                        <option>Propiedad Inmobiliaria</option>
+                        <option>Flota Corporativa / Maquinaria</option>
+                    </select>
+                    <input type="text" placeholder="Marca / Ubicación del Bien">
+                    <button class="btn-submit">Enviar Solicitud</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding-top: 20px;">
+        <h2 class="section-title" style="text-align: center;">Tu experiencia sin fricciones</h2>
+        <p class="section-subtitle" style="text-align: center; margin-bottom: 40px;">Rematar nunca fue tan fácil y seguro. Sigue estos 4 pasos.</p>
+        
+        <div class="grid-tutorial">
+            <div class="card-lote">
+                <span style="font-size: 40px; display: block; margin-bottom: 15px;">📱</span>
+                <h3 style="color: var(--color-principal); margin-bottom: 10px; font-weight: 800; font-size: 16px;">1. Regístrate</h3>
+                <p style="color: var(--texto-claro); line-height: 1.6; font-size: 14px; margin: 0;">Crea tu cuenta gratuita. <strong style="color:var(--alerta);">Importante:</strong> Tú debes gestionar personalmente tu registro.</p>
+            </div>
+            <div class="card-lote">
+                <span style="font-size: 40px; display: block; margin-bottom: 15px;">💸</span>
+                <h3 style="color: var(--color-principal); margin-bottom: 10px; font-weight: 800; font-size: 16px;">2. Garantía</h3>
+                <p style="color: var(--texto-claro); line-height: 1.6; font-size: 14px; margin: 0;">Transfiere tu garantía para activar tu perfil. Si no ganas, te devolvemos el dinero.</p>
+            </div>
+            <div class="card-lote">
+                <span style="font-size: 40px; display: block; margin-bottom: 15px;">🔍</span>
+                <h3 style="color: var(--color-principal); margin-bottom: 10px; font-weight: 800; font-size: 16px;">3. Inspecciona</h3>
+                <p style="color: var(--texto-claro); line-height: 1.6; font-size: 14px; margin: 0;">Revisa las fotos, la ficha técnica online, o ven a nuestras bodegas.</p>
+            </div>
+            <div class="card-lote">
+                <span style="font-size: 40px; display: block; margin-bottom: 15px;">🔨</span>
+                <h3 style="color: var(--color-principal); margin-bottom: 10px; font-weight: 800; font-size: 16px;">4. Puja y Gana</h3>
+                <p style="color: var(--texto-claro); line-height: 1.6; font-size: 14px; margin: 0;">Conéctate el día del evento, haz tu mejor oferta y adjudícate el bien.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title" style="text-align: center;">Preguntas Frecuentes</h2>
+        <p class="section-subtitle" style="text-align: center; margin-bottom: 40px; font-weight: 300;">Todo claro, sin letras chicas.</p>
+        
+        <div style="max-width: 900px; margin: 0 auto;">
+            <details>
+                <summary>1. ¿Por qué debo pagar una garantía y cómo se devuelve?</summary>
+                <div class="faq-content">La garantía es obligatoria para habilitar tu cuenta y asegurar la seriedad de las ofertas. Si no te adjudicas ningún lote, la garantía se devuelve íntegramente a tu cuenta bancaria en un plazo máximo de <strong>3 días hábiles</strong> posteriores al evento.</div>
+            </details>
+            <details>
+                <summary>2. ¿Quiénes pueden participar en los remates de Zárate?</summary>
+                <div class="faq-content">Pueden participar todas las personas naturales mayores de edad y empresas (personas jurídicas) que se registren en el portal y hayan abonado la garantía correspondiente antes de la hora del remate.</div>
+            </details>
+            <details>
+                <summary>3. ¿Cuánto es la comisión de la casa de remates y cuándo se paga?</summary>
+                <div class="faq-content">Para siniestrados, la comisión es del 12% + IVA, + 1% de gestión. En Retail Hogar, es 15% + IVA. El saldo debe ser pagado por transferencia dentro de las <strong>24 a 48 horas hábiles</strong> siguientes.</div>
+            </details>
+            <details>
+                <summary>4. ¿Cuáles son los días y horarios para el retiro de los lotes adjudicados?</summary>
+                <div class="faq-content">En San Ignacio 101, Quilicura. <strong>Siniestrados:</strong> miércoles y jueves de 09:30 a 17:00 hrs. <strong>Retail Hogar:</strong> jueves y viernes de 09:30 a 17:00 hrs.</div>
+            </details>
+            <details>
+                <summary>5. ¿Zárate gestiona el transporte de los vehículos siniestrados?</summary>
+                <div class="faq-content">No, el transporte y retiro del vehículo adjudicado es responsabilidad exclusiva del comprador. El vehículo debe ser retirado en grúa desde nuestras dependencias dentro de los plazos establecidos.</div>
+            </details>
+        </div>
+    </section>
+
+    <section class="container" style="background: var(--fondo-sitio);">
+        <div class="section-header-row" style="margin-bottom: 25px;">
+            <div class="title-wrapper">
+                <span class="section-pretitle">INFORMACIÓN OPERATIVA</span>
+                <h2 class="section-title">NUESTROS DATOS</h2>
+            </div>
+        </div>
+        
+        <div class="operativo-grid">
+            <div class="bank-box">
+                <h3>Cuentas para Garantías (BCI)</h3>
+                <div class="bank-data">
+                    Titular: Remate Industrial Limitada<br>
+                    RUT: 76.499.574-0<br>
+                    Banco: BCI<br>
+                    Cta. Cte: 61461458<br>
+                    Email: garantias@zarate.cl
+                </div>
+                <p style="color: var(--alerta); font-weight: 700; font-size: 12px; line-height: 1.5; margin: 0;">⚠ OBLIGATORIO: Debes gestionar personalmente tu abono de garantía.</p>
+            </div>
+            
+            <div class="bank-box" style="border-left-color: var(--color-acento);">
+                <h3>Horarios de Exhibición</h3>
+                <div class="bank-data" style="border-color: var(--color-principal);">
+                    <strong style="color: var(--color-principal); font-size: 14px;">🚗 Siniestrados:</strong><br>
+                    <span style="font-weight: 500;">Lunes 09:30 a 17:00 hrs.<br>Martes 09:30 a 14:00 hrs.</span><br><br>
+                    <strong style="color: var(--color-principal); font-size: 14px;">📦 Retail Hogar:</strong><br>
+                    <span style="font-weight: 500;">Martes 09:30 a 17:00 hrs.</span>
+                </div>
+            </div>
+
+            <div class="map-box" style="grid-column: 1 / -1;">
+                <iframe src="https://maps.google.com/maps?q=San%20Ignacio%20101,%20Quilicura&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <a href="#" class="footer-logo-text">ZÁRATE <span>REMATES</span></a>
+                <p style="margin-top: 10px; font-size: 13px;">Líderes en liquidación de activos corporativos y particulares, combinando tecnología y transparencia total en todo Chile.</p>
+            </div>
+            <div>
+                <h4>Enlaces Rápidos</h4>
+                <p><a href="#siniestrados">› Remates Siniestrados</a></p>
+                <p><a href="#retail">› Remates Retail Hogar</a></p>
+                <p><a href="#liquida">› Liquida tus Activos</a></p>
+            </div>
+            <div>
+                <h4>Soporte y Contacto</h4>
+                <p>📍 San Ignacio 101, Quilicura.</p>
+                <p>📞 +56 2 2739 1234</p>
+                <p>✉️ garantias@zarate.cl</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Remate Industrial Limitada (RUT 76.499.574-0). Master Bright Premium Amplio.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
+
+        function changeSlide(index) {
+            if (slides[currentSlide]) slides[currentSlide].classList.remove('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            if (slides[currentSlide]) slides[currentSlide].classList.add('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+            resetInterval();
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            changeSlide(next);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 8000); 
+        }
+
+        resetInterval();
+    </script>
 
 </body>
 </html>
