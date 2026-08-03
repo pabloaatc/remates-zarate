@@ -42,8 +42,11 @@
         .card-lote { background: var(--fondo-tarjetas); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; transition: all 0.3s ease; position: relative; display: flex; flex-direction: column; }
         .card-lote:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(37, 99, 235, 0.15); border-color: var(--color-acento); }
         .img-container { overflow: hidden; position: relative; height: 220px; }
-        .card-lote img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-        .card-lote:hover img { transform: scale(1.05); }
+        
+        /* ESTILO PARA EL BLOQUE "EN PREPARACIÓN" */
+        .img-placeholder { width: 100%; height: 100%; background: #E2E8F0; display: flex; align-items: center; justify-content: center; color: #64748B; font-weight: 700; letter-spacing: 1px; font-size: 14px; text-transform: uppercase; border-bottom: 4px solid var(--color-acento); transition: transform 0.4s; }
+        .card-lote:hover .img-placeholder { transform: scale(1.05); background: #CBD5E1; color: var(--color-principal); }
+
         .badge { position: absolute; top: 15px; left: 15px; background: var(--exito); color: white; padding: 5px 12px; border-radius: 6px; font-size: 10px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 2; letter-spacing: 0.5px; text-transform: uppercase; }
         .badge.bad { background: var(--alerta); }
         .card-body { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
@@ -100,10 +103,9 @@
 
     <section class="container">
         <div class="grid-lotes">
-            <!-- LOTE 1 -->
             <div class="card-lote">
                 <span class="badge">✓ Motor Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/pickup,truck,crash/all" alt="Nissan Navara"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Nissan Navara 2.3 2023</h3>
                     <span class="card-desc">LOTE #405 · Volcamiento</span>
@@ -111,10 +113,9 @@
                     <a href="#" class="btn-outline">Ver Ficha Técnica</a>
                 </div>
             </div>
-            <!-- LOTE 2 -->
             <div class="card-lote">
                 <span class="badge bad">⚠ No Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/sedan,car,crash/all" alt="Toyota Yaris"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Toyota Yaris 1.5 2022</h3>
                     <span class="card-desc">LOTE #406 · Choque Frontal</span>
@@ -122,10 +123,9 @@
                     <a href="#" class="btn-outline">Ver Ficha Técnica</a>
                 </div>
             </div>
-            <!-- LOTE 3 -->
             <div class="card-lote">
                 <span class="badge">✓ Motor Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/suv,car/all" alt="Chevrolet Tracker"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Chevrolet Tracker 2024</h3>
                     <span class="card-desc">LOTE #407 · Robo Hallazgo</span>
@@ -133,10 +133,9 @@
                     <a href="#" class="btn-outline">Ver Ficha Técnica</a>
                 </div>
             </div>
-            <!-- LOTE 4 -->
             <div class="card-lote">
                 <span class="badge">✓ Motor Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/ford,ranger/all" alt="Ford Ranger"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Ford Ranger XLT 2023</h3>
                     <span class="card-desc">LOTE #408 · Colisión Severa</span>
@@ -144,10 +143,9 @@
                     <a href="#" class="btn-outline">Ver Ficha Técnica</a>
                 </div>
             </div>
-            <!-- LOTE 5 -->
             <div class="card-lote">
                 <span class="badge">✓ Motor Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/excavator/all" alt="Excavadora JCB"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Excavadora JCB JS220 2021</h3>
                     <span class="card-desc">LOTE #409 · Maquinaria Pesada</span>
@@ -155,10 +153,9 @@
                     <a href="#" class="btn-outline">Ver Antecedentes</a>
                 </div>
             </div>
-            <!-- LOTE 6 -->
             <div class="card-lote">
                 <span class="badge bad">⚠ No Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/van,car/all" alt="Peugeot Partner"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Peugeot Partner 1.6 HDi 2022</h3>
                     <span class="card-desc">LOTE #410 · Colisión Lateral</span>
@@ -166,10 +163,9 @@
                     <a href="#" class="btn-outline">Ver Ficha Técnica</a>
                 </div>
             </div>
-            <!-- LOTE 7 -->
             <div class="card-lote">
                 <span class="badge">✓ Motor Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/hyundai,tucson/all" alt="Hyundai Tucson"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Hyundai Tucson 2.0 2021</h3>
                     <span class="card-desc">LOTE #411 · Impacto Trasero</span>
@@ -177,10 +173,9 @@
                     <a href="#" class="btn-outline">Ver Ficha Técnica</a>
                 </div>
             </div>
-            <!-- LOTE 8 -->
             <div class="card-lote">
                 <span class="badge bad">⚠ No Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/mitsubishi,l200/all" alt="Mitsubishi L200"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Mitsubishi L200 Katana 2020</h3>
                     <span class="card-desc">LOTE #412 · Volcamiento Lateral</span>
@@ -188,10 +183,9 @@
                     <a href="#" class="btn-outline">Ver Ficha Técnica</a>
                 </div>
             </div>
-            <!-- LOTE 9 -->
             <div class="card-lote">
                 <span class="badge">✓ Motor Enciende</span>
-                <div class="img-container"><img src="https://loremflickr.com/600/400/toyota,hilux/all" alt="Toyota Hilux"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Toyota Hilux 2.8 SRX 2022</h3>
                     <span class="card-desc">LOTE #413 · Daño Frontal Moderado</span>
