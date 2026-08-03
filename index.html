@@ -20,7 +20,7 @@
         
         body { font-family: 'Lexend Deca', sans-serif; background-color: var(--fondo-sitio); margin: 0; color: var(--color-principal); scroll-behavior: smooth; overflow-x: hidden; font-size: 14px; line-height: 1.6; font-weight: 300;}
         
-        /* CINTA TICKER - OSCURA Y ELEGANTE */
+        /* CINTA TICKER */
         .cinta-noticias { background-color: var(--color-principal); color: var(--fondo-sitio); padding: 10px 0; overflow: hidden; white-space: nowrap; display: flex; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
         .cinta-animada { display: inline-block; white-space: nowrap; animation: ticker-move 35s linear infinite; }
         .cinta-animada:hover { animation-play-state: paused; }
@@ -28,7 +28,7 @@
         .highlight-naranja { color: #FCD34D; font-weight: 800; }
         @keyframes ticker-move { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         
-        /* HEADER LUMINOSO Y ESPACIOSO */
+        /* HEADER */
         header { background: rgba(255, 255, 255, 0.95); padding: 15px 60px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); backdrop-filter: blur(10px); }
         .logo-text { font-weight: 800; font-size: 26px; color: var(--color-principal); letter-spacing: -1px; text-decoration: none; display: flex; align-items: center; text-transform: uppercase;}
         .logo-text span { color: var(--color-acento); margin-left: 8px; font-weight: 700; font-size: 15px; letter-spacing: 2px;}
@@ -38,7 +38,7 @@
         .btn-login { background: var(--color-principal); color: var(--fondo-sitio) !important; padding: 12px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2); transition: all 0.3s; font-size: 12px !important; font-weight: 700;}
         .btn-login:hover { background: var(--color-acento); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3); }
         
-        /* HERO SLIDER REDISEÑADO */
+        /* HERO SLIDER */
         .hero-slider { position: relative; width: 100%; height: 500px; overflow: hidden; background-color: var(--color-principal); }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; z-index: 1; }
@@ -66,7 +66,6 @@
         .pr-day { background: var(--color-acento); color: var(--fondo-sitio); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; width: 40px; text-align: center; letter-spacing: 0.5px;}
         .pr-hour { color: #60A5FA; font-family: monospace; font-size: 16px; width: auto; min-width: 50px; text-align: right; font-weight: 700;}
         
-        /* SLIDES */
         .hero-text h1.titulo-slide { font-size: 44px; margin: 0 0 12px 0; line-height: 1.1; font-weight: 800; text-shadow: 0 4px 15px rgba(0,0,0,0.6); }
         .hero-text p.desc-slide { font-size: 17px; font-weight: 400; margin-bottom: 25px; line-height: 1.6; text-shadow: 0 2px 10px rgba(0,0,0,0.8); max-width: 550px;}
         .etiqueta-top { display: inline-block; background: var(--color-acento); padding: 8px 16px; border-radius: 6px; font-weight: 800; font-size: 11px; letter-spacing: 2px; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-transform: uppercase;}
@@ -97,8 +96,6 @@
         .card-lote:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12); border-color: var(--color-acento); }
         
         .img-container { overflow: hidden; position: relative; height: 200px; }
-        
-        /* ESTILO PARA EL BLOQUE "EN PREPARACIÓN" */
         .img-placeholder { width: 100%; height: 100%; background: #E2E8F0; display: flex; align-items: center; justify-content: center; color: #64748B; font-weight: 700; letter-spacing: 1px; font-size: 14px; text-transform: uppercase; border-bottom: 4px solid var(--color-acento); transition: transform 0.4s; }
         .card-lote:hover .img-placeholder { transform: scale(1.05); background: #CBD5E1; color: var(--color-principal); }
 
@@ -115,11 +112,11 @@
         .card-lote:hover .btn-outline { background: var(--color-acento); color: var(--fondo-sitio); border-color: var(--color-acento); }
         #retail { background-color: var(--fondo-tarjetas); }
         
-        /* GRID PARA TUTORIAL */
+        /* GRID TUTORIAL */
         .grid-tutorial { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
         .grid-tutorial .card-lote { min-width: auto; flex: auto; scroll-snap-align: none; border-top: 5px solid var(--color-acento); border-bottom: 1px solid #E2E8F0;}
         
-        /* FORMULARIO DE CAPTACIÓN */
+        /* FORMULARIO */
         .captacion-global { background: var(--color-principal); margin: 60px 60px; border-radius: 16px; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2); max-width: 1400px; margin-left: auto; margin-right: auto; overflow: hidden; border: 1px solid #334155;}
         .captacion-texto { padding: 60px; color: white; display: flex; flex-direction: column; justify-content: center; }
         .captacion-texto .pretitle { font-size: 11px; letter-spacing: 2px; color: #94A3B8; text-transform: uppercase; font-weight: 700; margin-bottom: 15px; display: block;}
@@ -156,22 +153,59 @@
         .footer-grid p, .footer-grid a { color: #CBD5E1; text-decoration: none; line-height: 1.6; font-weight: 400; transition: color 0.3s; font-size: 14px;}
         .footer-grid a:hover { color: var(--color-acento); padding-left: 5px; }
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-weight: 400; font-size: 12px; color: #64748B;}
-        
+
+        /* ADAPTACIÓN INTELIGENTE A MÓVILES (SOLUCIONA EL DESORDEN Y SOBREPOSICIÓN) */
         @media (max-width: 992px) {
-            header { flex-direction: column; padding: 15px; gap: 15px; }
-            .nav-menu { flex-wrap: wrap; justify-content: center; gap: 12px; }
-            .hero-slider { height: 650px; }
+            .hero-slider { height: 750px; } /* Más altura para que no choquen los textos y la tarjeta */
             .hero-content { flex-direction: column; text-align: center; gap: 30px; padding: 0 20px;}
-            .slide-nueva .hero-text h1 { font-size: 40px; }
-            .pr-card { max-width: 100%; padding: 25px;}
-            .section-header-row { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 25px;}
-            .captacion-global { grid-template-columns: 1fr; margin: 30px 20px; border-radius: 12px; }
-            .captacion-texto { padding: 30px; text-align: center; }
-            .captacion-form-box { padding: 30px; }
-            .form-grid { grid-template-columns: 1fr; }
-            .btn-submit { grid-column: span 1; }
-            .container { padding: 50px 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center;} /* Arregla el sobrelapamiento del pie de página */
+            .footer-grid h4 { margin-top: 10px; }
+            footer { padding: 40px 20px 20px; }
             .operativo-grid { grid-template-columns: 1fr;}
+            .captacion-global { grid-template-columns: 1fr; margin: 30px 15px; border-radius: 12px; }
+            .captacion-texto { padding: 30px 20px; text-align: center; }
+            .captacion-form-box { padding: 30px 20px; }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; gap: 15px; }
+            .logo-text { font-size: 22px; }
+            .nav-menu { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .nav-menu a { font-size: 11px; margin-left: 5px; }
+            .btn-login { padding: 10px 20px; font-size: 11px !important; margin-top: 5px;}
+            
+            .hero-slider { height: 800px; } /* Ajuste de seguridad para teléfonos muy pequeños */
+            .slide-nueva .hero-text h1 { font-size: 32px; }
+            .slide-nueva .hero-text p { font-size: 14px; margin-bottom: 20px; }
+            .btn-cat, .btn-liq { padding: 12px 20px; font-size: 12px; margin-bottom: 10px; width: 100%; box-sizing: border-box; margin-right: 0;}
+            
+            .pr-card { padding: 20px; }
+            .pr-header { font-size: 10px; }
+            .pr-item { flex-direction: row; }
+            .pr-info strong { font-size: 13px; }
+            .pr-info span { font-size: 9px; }
+            .pr-time { gap: 8px; }
+            .pr-day { font-size: 10px; padding: 4px 8px; }
+            .pr-hour { font-size: 14px; }
+            
+            .container { padding: 40px 15px; }
+            .section-title { font-size: 24px; text-align: center; margin-bottom: 25px;}
+            .section-header-row { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+            .section-meta { text-align: center; }
+            
+            .carrusel-lotes { gap: 15px; padding-bottom: 15px; }
+            .card-lote { min-width: 280px; }
+            
+            .captacion-texto h2 { font-size: 26px; }
+            .form-grid input, .form-grid select { font-size: 12px; padding: 12px; }
+            
+            .faq-section { padding: 40px 15px; }
+            summary { font-size: 13px; padding: 15px; }
+            .faq-content { font-size: 13px; }
+            
+            .hero-text h1.titulo-slide { font-size: 30px; }
+            .hero-text p.desc-slide { font-size: 14px; }
+            .urgency-card { padding: 25px 20px; }
         }
     </style>
 </head>
