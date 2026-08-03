@@ -42,8 +42,11 @@
         .card-lote { background: var(--fondo-tarjetas); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; transition: all 0.3s ease; position: relative; display: flex; flex-direction: column; }
         .card-lote:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(37, 99, 235, 0.15); border-color: var(--color-acento); }
         .img-container { overflow: hidden; position: relative; height: 220px; }
-        .card-lote img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; border-bottom: 4px solid var(--color-acento); }
-        .card-lote:hover img { transform: scale(1.05); }
+        
+        /* ESTILO PARA EL BLOQUE "EN PREPARACIÓN" */
+        .img-placeholder { width: 100%; height: 100%; background: #E2E8F0; display: flex; align-items: center; justify-content: center; color: #64748B; font-weight: 700; letter-spacing: 1px; font-size: 14px; text-transform: uppercase; border-bottom: 4px solid var(--color-acento); transition: transform 0.4s; }
+        .card-lote:hover .img-placeholder { transform: scale(1.05); background: #CBD5E1; color: var(--color-principal); }
+
         .card-body { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
         .card-body h3 { margin: 0 0 8px 0; color: var(--color-principal); font-size: 17px; line-height: 1.3; font-weight: 700; }
         .card-desc { background: #F1F5F9; color: var(--texto-claro); padding: 5px 10px; border-radius: 6px; font-size: 12px; margin: 0 0 15px 0; font-weight: 600; display: inline-block; align-self: flex-start; border: 1px solid #E2E8F0; }
@@ -98,9 +101,8 @@
 
     <section class="container">
         <div class="grid-lotes">
-            <!-- PROPIEDAD 1 -->
             <div class="card-lote">
-                <div class="img-container"><img src="https://loremflickr.com/600/400/house,mediterranean/all" alt="Casa Mediterránea Las Condes"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Casa Mediterránea · Las Condes</h3>
                     <span class="card-desc">4 Dormitorios | 3 Baños | 250 m²</span>
@@ -108,9 +110,8 @@
                     <a href="#" class="btn-outline">Ver Antecedentes</a>
                 </div>
             </div>
-            <!-- PROPIEDAD 2 -->
             <div class="card-lote">
-                <div class="img-container"><img src="https://loremflickr.com/600/400/apartment,building/all" alt="Depto Providencia"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Departamento Amoblado · Providencia</h3>
                     <span class="card-desc">2 Dormitorios | 2 Baños | 85 m²</span>
@@ -118,9 +119,8 @@
                     <a href="#" class="btn-outline">Ver Antecedentes</a>
                 </div>
             </div>
-            <!-- PROPIEDAD 3 -->
             <div class="card-lote">
-                <div class="img-container"><img src="https://loremflickr.com/600/400/field,land/all" alt="Parcela Colina"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Parcela Agrícola · Colina</h3>
                     <span class="card-desc">Terreno 5.000 m² | Rol Propio</span>
@@ -128,9 +128,8 @@
                     <a href="#" class="btn-outline">Ver Antecedentes</a>
                 </div>
             </div>
-            <!-- PROPIEDAD 4 -->
             <div class="card-lote">
-                <div class="img-container"><img src="https://loremflickr.com/600/400/farmhouse/all" alt="Casa de Campo Lampa"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Casa de Campo Luxury · Lampa</h3>
                     <span class="card-desc">5 Dorm | 4 Baños | Parcela 1 Ha</span>
@@ -138,9 +137,8 @@
                     <a href="#" class="btn-outline">Ver Antecedentes</a>
                 </div>
             </div>
-            <!-- PROPIEDAD 5 -->
             <div class="card-lote">
-                <div class="img-container"><img src="https://loremflickr.com/600/400/modern,house/all" alt="Casa Contemporánea Vitacura"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Casa Contemporánea · Vitacura</h3>
                     <span class="card-desc">3 Dormitorios | 3 Baños | 210 m²</span>
@@ -148,9 +146,8 @@
                     <a href="#" class="btn-outline">Ver Antecedentes</a>
                 </div>
             </div>
-            <!-- PROPIEDAD 6 -->
             <div class="card-lote">
-                <div class="img-container"><img src="https://loremflickr.com/600/400/apartment,luxury/all" alt="Penthouse Ñuñoa"></div>
+                <div class="img-container"><div class="img-placeholder">En preparación</div></div>
                 <div class="card-body">
                     <h3>Penthouse con Terraza · Ñuñoa</h3>
                     <span class="card-desc">3 Dormitorios | 3 Baños | 145 m² + terraza</span>
