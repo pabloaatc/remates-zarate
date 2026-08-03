@@ -38,9 +38,58 @@
         .btn-login { background: var(--color-principal); color: var(--fondo-sitio) !important; padding: 12px 24px; border-radius: 8px; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2); transition: all 0.3s; font-size: 12px !important; font-weight: 700;}
         .btn-login:hover { background: var(--color-acento); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3); }
         
-        /* ALERTA ANTIFRAUDE (NUEVO) */
-        .alerta-seguridad { background-color: #FEF2F2; color: var(--alerta); padding: 12px 60px; font-size: 13px; font-weight: 600; text-align: center; border-bottom: 1px solid #FCA5A5; display: flex; align-items: center; justify-content: center; gap: 10px; position: sticky; top: 73px; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .alerta-seguridad span { background: var(--alerta); color: white; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+        /* ALERTA ANTIFRAUDE VERTICAL FLOTANTE (ESCRITORIO) */
+        .alerta-flotante {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) translateX(calc(-100% + 46px));
+            display: flex;
+            align-items: center;
+            z-index: 10000;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .alerta-flotante:hover {
+            transform: translateY(-50%) translateX(0);
+        }
+        .alerta-contenido {
+            background-color: var(--fondo-tarjetas);
+            border: 3px solid var(--alerta);
+            border-left: none;
+            padding: 25px;
+            width: 280px;
+            box-shadow: 5px 5px 25px rgba(0,0,0,0.2);
+            border-radius: 0 12px 12px 0;
+            color: var(--color-principal);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .alerta-contenido span {
+            display: block;
+            color: var(--alerta);
+            font-weight: 800;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .alerta-pestana {
+            background-color: var(--alerta);
+            color: var(--fondo-sitio);
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            padding: 25px 15px;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            box-shadow: 4px 0 15px rgba(225, 29, 72, 0.4);
+        }
+
+        /* ALERTA ANTIFRAUDE HORIZONTAL (MÓVIL - OCULTA EN ESCRITORIO) */
+        .alerta-movil { display: none; }
 
         /* HERO SLIDER */
         .hero-slider { position: relative; width: 100%; height: 500px; overflow: hidden; background-color: var(--color-principal); }
@@ -116,9 +165,9 @@
         .card-lote:hover .btn-outline { background: var(--color-acento); color: var(--fondo-sitio); border-color: var(--color-acento); }
         #retail { background-color: var(--fondo-tarjetas); }
         
-        /* GRID TUTORIAL (CORREGIDO PARA MÁS ESPACIO) */
+        /* GRID TUTORIAL - ARREGLADO CON PADDING ESPACIOSO Y DISEÑO LIMPIO */
         .grid-tutorial { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .grid-tutorial .card-lote { min-width: auto; flex: auto; scroll-snap-align: none; border-top: 5px solid var(--color-acento); border-bottom: 1px solid #E2E8F0; padding: 10px;}
+        .grid-tutorial .card-lote { min-width: auto; flex: auto; scroll-snap-align: none; border-top: 5px solid var(--color-acento); border-bottom: 1px solid #E2E8F0; padding: 30px; box-sizing: border-box; }
         
         /* FORMULARIO */
         .captacion-global { background: var(--color-principal); margin: 60px 60px; border-radius: 16px; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2); max-width: 1400px; margin-left: auto; margin-right: auto; overflow: hidden; border: 1px solid #334155;}
@@ -160,6 +209,25 @@
 
         /* ADAPTACIÓN INTELIGENTE A MÓVILES */
         @media (max-width: 992px) {
+            .alerta-flotante { display: none; } /* Oculta pestaña lateral en tablet/móvil */
+            .alerta-movil { 
+                display: flex; 
+                background-color: #FEF2F2; 
+                color: var(--alerta); 
+                padding: 12px 20px; 
+                font-size: 12px; 
+                font-weight: 600; 
+                text-align: center; 
+                flex-direction: column;
+                border-bottom: 1px solid #FCA5A5; 
+                align-items: center; 
+                gap: 8px; 
+                position: sticky; 
+                top: 73px; 
+                z-index: 1000; 
+            }
+            .alerta-movil span { background: var(--alerta); color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+
             .hero-slider { height: 750px; }
             .hero-content { flex-direction: column; text-align: center; gap: 30px; padding: 0 20px;}
             .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center;}
@@ -169,7 +237,6 @@
             .captacion-global { grid-template-columns: 1fr; margin: 30px 15px; border-radius: 12px; }
             .captacion-texto { padding: 30px 20px; text-align: center; }
             .captacion-form-box { padding: 30px 20px; }
-            .alerta-seguridad { top: 125px; padding: 12px 20px; font-size: 12px; flex-direction: column;}
         }
 
         @media (max-width: 768px) {
@@ -200,6 +267,7 @@
             
             .carrusel-lotes { gap: 15px; padding-bottom: 15px; }
             .card-lote { min-width: 280px; }
+            .grid-tutorial .card-lote { padding: 25px; } /* Ajuste de padding en tutorial para móvil */
             
             .captacion-texto h2 { font-size: 26px; }
             .form-grid input, .form-grid select { font-size: 12px; padding: 12px; }
@@ -237,9 +305,19 @@
         </nav>
     </header>
 
-    <div class="alerta-seguridad">
+    <div class="alerta-flotante">
+        <div class="alerta-contenido">
+            <span>⚠️ Aviso de Seguridad</span>
+            Remates Zárate nunca solicita pagos por WhatsApp ni llamadas. Toda garantía debe ser transferida exclusivamente a la cuenta oficial BCI a nombre de Remate Industrial Limitada RUT 76.499.574-0.
+        </div>
+        <div class="alerta-pestana">
+            ⚠️ Alerta Antifraude
+        </div>
+    </div>
+
+    <div class="alerta-movil">
         <span>⚠️ AVISO DE SEGURIDAD</span>
-        Remates Zárate nunca solicita pagos por WhatsApp ni llamadas. Toda garantía debe ser transferida exclusivamente a la cuenta oficial BCI a nombre de Remate Industrial Limitada RUT 76.499.574-0.
+        Remates Zárate nunca solicita pagos por WhatsApp ni llamadas. Transfiere solo a la cuenta oficial BCI de Remate Industrial Limitada.
     </div>
     
     <section class="hero-slider">
